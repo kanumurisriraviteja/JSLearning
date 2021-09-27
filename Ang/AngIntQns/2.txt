@@ -1,0 +1,64 @@
+Forms in angular :
+1. Template Driven (simple)
+2. Model/Reactive Driven (complex)
+
+Template Driven:
+----------------------------------------------------------------------------------------------------------------------------------
+In the json created the name field value will be the property and the [()] will the value > key :value 
+[(ngModel)] ="fullName" in html, .ts fullName :string ='' > must be there in both else undefined error.
+
+If we dont have the type="button" it will behave as submit, and submit methods are called.
+By default angular will append , 'novalidate' to the <form>. hence all the validations like required,max would not work if we place 'ngNativeValidate' would work as expected.
+exporting the ngModel to the local template reference variable #fullNameControl="ngModel" and the complete form we use #myForm="ngForm"
+touched,untouched,pristine,dirty,valid,invalid
+
+Route params >
+/people/:id   optional> /people/{id:emploee.id}
+this.selectedEmployeeId = +this._route.snapshot.paramMap.get('id'); getting by id.
+to get from the route param we use 'paramMap' and to get the details from the query we use 'queryParamMap' 
+snapshot the route parameter value does not change and we want to read the initial route parameter value.
+observable is when the route parameter changes and we want to react to the execute some code in response to the change.
+when we subscribe we need to explicitly need to unsubscribe, ActivatedRoute it will automatically unsubscribe.
+The code present after the subscribe will be executed asynchronously.
+Resolver service prefetching the data even before the page is being dispalyed.this would be in the app.routing.module.ts
+
+Routing Navigation events>
+NavigationStart, NavigationEnd, NavigationCancel, NavigationError
+
+Rout Gaurds>
+CanDeactivate,CanActive.
+
+*ngIf	 > add and removes the elements from the dom 
+[hidden] > sets the dispaly : none property, and the elements are stil in the dom. better for toggling.
+
+<ng-content></ng-content> 		> Content Projection 
+<ng-container></ng-container>	> if we have multiple structural directives like *ngIf *ngFor. Not rendered in the dom.
+<ng-template></ng-template>		> *ngIf else, the else part will be in the ng-template
+https://codeburst.io/angular-interview-question-what-are-ng-container-ng-content-and-ng-template-9fafbbc255d5
+
+
+Modules:
+Root,Routing,Common.Shared,Core.
+NgModule			> must import this to be a module
+BrowserModule 		> import this only once.exports the CommonModule. BrowserAnimationsModule both must be in the same module.
+CommonModule  		> structural directives like *ngFor,*ngIf
+FormsModule   		> [(ngModel)] template driven
+ReactiveFormsModule >  forms driven
+HttpClientModuel 	> avail htttp services
+
+Routing Module:
+forRoot 	> must be imported only once in the app.module.ts
+forChild	> must be in the childs of all the modules.
+Routes[],RouterModule,ActivatedRoute,<router-outlet></router-outlet>,routerLink,routerLinkActive
+
+Shared module:
+may export CommonModule,FormsModule
+should not have providers,should not import or reexport modules that have providers.
+imported by all the feature modules.
+
+for the lazy loading of a module, all the routes in the module must be with the same prefix.
+
+Eager Loading 	> all the modules are loaded in the first request,hence the first request would take more time
+Lazy Loading	> on the demand the modules are loaded
+pre Loading		> all the modules are loaded in the background after the first request 
+custom Loading	> here we can write the custom code to load on the modules we want.	

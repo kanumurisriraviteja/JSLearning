@@ -1,0 +1,113 @@
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee()">
+    <!-- saveEmployee(employeeForm)->saveEmployee(employee) ngNativeValidate  (ngSubmit)="saveEmployee(); employeeForm.reset()"-->
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Create Employee</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group" [class.has-error]="nameControl.invalid && nameControl.touched"
+                        [class.has-success]="nameControl.valid">
+                        <label for="name" class="control-label">Name</label>
+                        <input  required type="text" name="name" [(ngModel)]="employee.name"
+                            class="form-control" #nameControl="ngModel">
+                        <span class="help-block" *ngIf="nameControl.invalid && nameControl.touched">
+                            Name is required
+                        </span>
+                    </div>
+                    <div class="form-group" [class.has-error]="email.invalid && email.touched">
+                        <label for="email" class="control-label">Email</label>
+                        <input id="email" required
+                            pattern="^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(gmail)\.com$" name="email"
+                            #email="ngModel" [(ngModel)]="employee.email" type="text" class="form-control">
+                        <span class="help-block" *ngIf="email.touched && email.errors?.required">
+                            Email is required
+                        </span>
+                        <span class="help-block" *ngIf="email.errors?.pattern">
+                            Email is invalid
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dob" class="control-label">Date of Birth</label>
+                        <!-- each browser different experience -->
+                        <!-- <input id="dob" name="dob" type="date" name="dob" [(ngModel)]="dob" class="form-control"> -->
+                        <input id="dob" name="dob" name="dob" [(ngModel)]="employee.dob" class="form-control"
+                            bsDatepicker [bsConfig]='bsDatePickerConfig'>
+                    </div>
+                    <div class="form-group">
+                        <label for="doj" class="control-label">Date of Joining</label>
+                        <input id="doj" name="doj" name="doj" class="form-control"
+                            bsDatepicker [bsConfig]='bsDatePickerConfig'>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="form-control">
+                            <label class="radio-inline"><input type="radio" name="gender" value="male"
+                                    [(ngModel)]="employee.gender">Male</label>&nbsp;&nbsp;
+                            <label class="radio-inline"><input type="radio" name="gender" value="female"
+                                    [(ngModel)]="employee.gender">Female</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="College" class="control-label">
+                            College
+                        </label>
+                        <select id="college" name="college" [(ngModel)]="employee.college" class="form-control"
+                            #college="ngModel" appSelectValidator="select">
+                            <!-- here select is disabled, so as not to select -->
+                            <option disabled value="select">Select College</option>
+                            <option value="iit">IIT</option>
+                            <option value="nit">NIT</option>
+                            <option value="none">Other</option>
+                        </select>
+                        <span class="help-block" *ngIf="college.touched && college.errors?.defaultSelected">
+                            College is required
+                        </span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tech Stack</label>
+                        <div class="form-control">
+                            <label class="checkbox-inline control-label">&nbsp;&nbsp;
+                                <input type="checkbox" name="angular" [(ngModel)]="employee.angular"> Angular
+                            </label>
+                            <label class="checkbox-inline control-label">&nbsp;&nbsp;
+                                <input type="checkbox" name="dotnetcore" [(ngModel)]="employee.dotnetcore"> .net core
+                            </label>
+                            <label class="checkbox-inline control-label">&nbsp;&nbsp;
+                                <input type="checkbox" name="python" [(ngModel)]="employee.python" disabled> Python/AI
+                            </label>
+                        </div>
+                    </div>
+
+                    <br />
+                    <!-- 
+                        control.updateValueAndValidity(); password, confirmpassword trigger.
+                        mgModeGroup
+                        <div class="form-grup">
+                        <div class="form-control">
+                            <button type= "button" (click)=testclick(employeeForm)>Test</button>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="panel-footer">
+                    <button type="submit" class="btn btn-link">More>>>>>>>>>>>>>></button>
+                    <!-- <button type="submit" class="btn btn-link" [disabled]="!employeeForm.valid">More>>>>>>>>>>>>>></button> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div>
+                <h3>Form Details entered by the employee</h3>
+            </div>
+            <br />
+            <div>
+                Form value is : {{employeeForm.value | json }} <br />
+                Employee value is : {{employee | json }}
+            </div>
+        </div>
+    </div>
+</form>

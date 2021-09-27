@@ -1,0 +1,38 @@
+<ng-content> </ng-content>
+<p>{{domviewchild}} {{parentToChild}} </p>
+<!--TODO <p #domchild1></p> -->
+<br/>
+<button (click)=btnClick()>Child to Parent by OutPut</button>&nbsp;&nbsp;
+<button (click)=CarsWebApi()>Get Cars WebApi</button> &nbsp;&nbsp;
+<button (click)=InsertCarsWebApi()>Insert New Car</button>&nbsp;&nbsp;
+<button (click)=UpdateCarsWebApi()>Update</button>&nbsp;&nbsp;
+<button (click)=DeleteCarsWebApi()>Delete</button>&nbsp;&nbsp;
+<button (click)=ExpensiveCarsJsonServer()>Expensive Cars Json Server</button> 
+<br/><br/>
+Cars static data {{carstatic|json}} <br/><br/>
+<p><B>Status message:</B>&nbsp;<i>{{message}}</i><br/></p>
+<p *ngIf='messageStatus'> 
+Cars web api output of btnclick {{carsWebApi|json}}
+</p>
+
+<table class="table table-striped">
+    <thead>
+    <th>Model</th>
+    <th>Type</th>
+    <th>Color</th>
+</thead>
+
+<tbody>
+    <tr colspan="3" *ngIf='!messageStatus'>No DATA</tr>
+    <ng-container *ngIf='messageStatus'>
+    <tr *ngFor="let e of carsWebApi">
+        <td>{{e.Model}}</td>
+        <td>{{e.Type}}</td>
+        <td>{{e.Color}}</td>
+    </tr>
+</ng-container>
+</tbody>
+</table>
+<input id="dob" bsDatepicker [bsConfig]='bsDatePickerConfig'>
+<br/>
+<button type="button" (click)=GoHome() class="btn btn-link">Employee>>>>>>>>>>>>>></button>
