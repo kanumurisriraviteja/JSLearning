@@ -18,23 +18,23 @@ export class CarsWebapiService {
         //       ];
 
         // this is error and locks to the console.
-        // return this._genericHttp.HttpGetService("https://localhost:44330/api/Values/GetCar1");
+        // return this._genericHttp.HttpGetService("https://localhost:44330/api/Car/GetCar1");
 
-        return this.genericHttp.HttpGetService('Values/GetCar');
+        return this.genericHttp.HttpGetService('Car/GetAllCar');
     }
 
     InsertCarWebApi(car: Icar): Observable<Icar[]> {
-      return this.genericHttp.HttpInsertService('Values/PostCar', car);
+      return this.genericHttp.HttpInsertService('Car/PostCar', car);
     }
     UpdateCarWebApi(car: Icar): Observable<Icar[]> {
-      return this.genericHttp.HttpEditService('Values/PutCar', car);
+      return this.genericHttp.HttpEditService('Car/PutCar', car);
     }
     DeleteCarWebApi(car: Icar): Observable<Icar[]> {
-      return this.genericHttp.HttpDeleteService('Values/DeleteCar', car.Model);
+      return this.genericHttp.HttpDeleteService('Car/DeleteCar', car.Model);
     }
 
     GetCarsWebApiPromise(): Promise<any> {
-      return this.genericHttp.HttpGetServicePromise('Values/GetCar');
+      return this.genericHttp.HttpGetServicePromise('Car/GetCar');
     }
 
     GetExpensiveCarsJsonServer(): Observable<Icar[]> {

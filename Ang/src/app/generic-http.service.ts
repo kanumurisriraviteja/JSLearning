@@ -10,8 +10,8 @@ import { catchError } from 'rxjs/operators';
 
 export class GenericHttpService {
 
-  // baseurl = 'https://localhost:44330/api/';
-   baseurl = 'https://kanumuriwa.azurewebsites.net/api/';
+  baseurl = 'https://localhost:7095/api/';
+  //  baseurl = 'https://kanumuriwa.azurewebsites.net/api/';
   baseurlJson = 'http://localhost:3000/';
 
   baseheader: HttpHeaders = new HttpHeaders({
@@ -39,7 +39,7 @@ export class GenericHttpService {
 
   public HttpDeleteService(url: string, body: any): Observable<any> {
 
-    return this.http.delete<any>(`${this.baseurl}${url}/${body}`, { headers: this.baseheader })
+    return this.http.post<any>(`${this.baseurl}${url}/id/${body}`, { headers: this.baseheader })
       .pipe(catchError(this.errorHandler));
   }
   private errorHandler(errorHandler: HttpErrorResponse) {
