@@ -16,11 +16,11 @@
   "profile": {
     "name": "typicode"
   },
-  "cars":[
+  "cars": [
     {
-      "Type":7,
-      "Mode":"Lamborgini",
-      "color":"White"
+      "type": "Lamborgini",
+      "model": 10,
+      "color": "White"
     }
   ]
 }

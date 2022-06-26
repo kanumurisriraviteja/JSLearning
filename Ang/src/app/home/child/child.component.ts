@@ -34,7 +34,7 @@ export class ChildComponent implements OnInit, OnChanges {
   childToParent = new EventEmitter<any>();
   // Inteface:  typo no run time errors.
   carstatic: Icar[] = [];
-  tejacars: Icar[] = [{ Type: 'lamborgini', Model: 9, Color: 'white' }];
+  tejacars: Icar[] = [{ type: 'lamborgini', model: 6, color: 'white' }];
   carsWebApi: Icar[] = [];
 
   messageStatus: boolean;
@@ -131,7 +131,7 @@ export class ChildComponent implements OnInit, OnChanges {
 
   InsertCarsWebApi() {
     this.message = 'Inserting Car';
-    const newCar: Icar = { Type: 'ford', Model: 5, Color: 'white' };
+    const newCar: Icar = { type: 'ford', model: 5, color: 'white' };
 
     this.carsWebapi.InsertCarWebApi(newCar).subscribe(data => this.carsWebApi = data,
       (error) => {
@@ -149,7 +149,7 @@ export class ChildComponent implements OnInit, OnChanges {
   }
   UpdateCarsWebApi() {
     this.message = 'Updating Car';
-    const newCar: Icar = { Type: 'Fieta', Model: 1, Color: 'Blue' };
+    const newCar: Icar = { type: 'bmw', model: 5, color: 'Blue' };
 
     this.carsWebapi.UpdateCarWebApi(newCar).subscribe(data => this.carsWebApi = data,
       (error) => {
@@ -167,7 +167,7 @@ export class ChildComponent implements OnInit, OnChanges {
   }
   DeleteCarsWebApi() {
     this.message = 'Deleting Car';
-    const newCar: Icar = { Type: '', Model: 3, Color: '' };
+    const newCar: Icar = { type: '', model: 5, color: '' };
 
     this.carsWebapi.DeleteCarWebApi(newCar).subscribe(data => this.carsWebApi = data,
       (error) => {
