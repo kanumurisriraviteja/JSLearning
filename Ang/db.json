@@ -1,0 +1,9 @@
+{
+  "cars": [
+    {
+      "type": "Lamborgini",
+      "model": 10,
+      "color": "White"
+    }
+  ]
+}
