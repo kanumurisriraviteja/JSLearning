@@ -34,12 +34,12 @@ export class ChildComponent implements OnInit, OnChanges {
   childToParent = new EventEmitter<any>();
   // Inteface:  typo no run time errors.
   carstatic: Icar[] = [];
-  tejacars: Icar[] = [{ type: 'lamborgini', model: 6, color: 'white' }];
+  tejacars: Icar[] = [{ type: 'ferrai', model: 66, color: 'white' }];
   carsWebApi: Icar[] = [];
 
   messageStatus: boolean;
   message: string;
-  domviewchild = '';
+  domviewchild = 'Parent to Child via INPUT parameter============:> ';
   moreCarsStatic: Icar[] = [];
 
   ngOnInit(): void {

@@ -15,12 +15,15 @@ const routes: Routes =
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     {
       path: 'employee', loadChildren: './employees/employees.module#EmployeesModule'
+    }, 
+    {
+      path: 'student', loadChildren: './students/students.module#StudentsModule'
     },
     { path: '**', component: PageNotFoundComponent }
   ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules})], // (routes,{ useHash: true ,enableTracing: true, { preloadingStrategy: PreloadAllModules|NoPreloading }})
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })], // (routes,{ useHash: true ,enableTracing: true, { preloadingStrategy: PreloadAllModules|NoPreloading }})
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -3,8 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CreateEmloyeeComponent } from './create-emloyee/create-emloyee.component';
 import { MoreEmployeeDetailsComponent } from './more-employee-details/more-employee-details.component';
-import { StudentComponent } from './student/student.component';
-
 import { CanDeactiveCreateEmployeeGuard } from './can-deactive-create-employee.guard';
 
 const routes: Routes =
@@ -14,9 +12,6 @@ const routes: Routes =
     },
     {
       path: 'more', component: MoreEmployeeDetailsComponent  // 'more/:name' only few params
-    },
-    {
-      path :'student', component : StudentComponent
     }
   ];
 

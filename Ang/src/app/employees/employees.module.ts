@@ -5,10 +5,10 @@ import { CanDeactiveCreateEmployeeGuard } from './can-deactive-create-employee.g
 
 import { CreateEmloyeeComponent } from './create-emloyee/create-emloyee.component';
 import { MoreEmployeeDetailsComponent } from './more-employee-details/more-employee-details.component';
-import { StudentComponent } from './student/student.component';
+
 
 @NgModule({
-  declarations: [CreateEmloyeeComponent, MoreEmployeeDetailsComponent, StudentComponent],
+  declarations: [CreateEmloyeeComponent, MoreEmployeeDetailsComponent],
   imports: [
     EmployeeRoutingModule,
     ApplicationSharedResourcesModule

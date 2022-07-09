@@ -15,6 +15,7 @@ import { DataTransportService } from './Services/data-transport.service'; // thi
 import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './Others/pagenotfound.component';
 import { HttpInceptorProviders } from './intercept';
+import { StudentsModule } from './students/students.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { HttpInceptorProviders } from './intercept';
     FormsModule,
     HttpClientModule,
     HomeModule,
-    ApplicationSharedResourcesModule
+    ApplicationSharedResourcesModule,
+    StudentsModule
   ],
   exports: [],
   providers: [GenericComponent, DataTransportService, HttpInceptorProviders
