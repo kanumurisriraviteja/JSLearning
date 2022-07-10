@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 
 
 @Injectable({
@@ -10,7 +11,8 @@ import { catchError } from 'rxjs/operators';
 
 export class GenericHttpService {
 
-  baseurl = 'http://localhost:5270/api/';
+  baseurl = environment.baseUrl;
+  // baseurl = 'http://localhost:5270/api/';
   //  baseurl = 'https://kanumuriwa.azurewebsites.net/api/';
   baseurlJson = 'http://localhost:3000/';
 
@@ -19,7 +21,7 @@ export class GenericHttpService {
     responseType: 'json'
   });
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { console.log('===============================', this.baseurl); }
 
   public HttpGetService(url: string): Observable<any> {
     return this.http.get<any>(`${this.baseurl}${url}`).pipe(catchError(this.errorHandler));
