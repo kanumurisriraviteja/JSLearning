@@ -3,9 +3,15 @@ FROM node:16-alpine as node
 WORKDIR /app
 COPY Ang/ .
 RUN npm install
-RUN npm run build --prod
+# This is with nginx running
+RUN npm run build --configuration=dkr
 
-#stage 2
+#This is without nginx
+# EXPOSE 4200
+# CMD /app/node_modules/.bin/ng serve --host 0.0.0.0 --disableHostCheck
+
+
+# stage 2
 FROM nginx:alpine
 COPY --from=node /app/dist/Ang /usr/share/nginx/html
 EXPOSE 80
